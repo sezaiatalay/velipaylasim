@@ -1,0 +1,38 @@
+<!doctype html><html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Ders Paneli</title>
+<style>
+:root{--navy:#2a2860;--bg:#eef0f8;--ink:#24234f;--muted:#5d5c86;--wa:#1faa59;--wa-d:#178a47;--card:#fff;--line:#dfe2f0}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--navy);color:#fff;padding:18px 16px 16px}
+header h1{margin:0;font-size:21px}header p{margin:2px 0 0;opacity:.8;font-size:14px}
+main{max-width:560px;margin:0 auto;padding:14px 16px 40px}
+h2{font-size:16px;margin:22px 2px 8px;color:var(--navy)}h2.bugun{color:#c0362c}
+.kart{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:10px;text-decoration:none;color:inherit}
+.kart img{width:76px;height:95px;object-fit:cover;border-radius:8px}
+.ust{font-weight:700;font-size:17px}.alt{color:var(--muted);font-size:14px}
+.git{display:inline-block;margin-top:6px;background:var(--wa);color:#fff;font-weight:700;border-radius:10px;padding:7px 12px;font-size:15px;box-shadow:0 3px 0 var(--wa-d)}
+.bos{color:var(--muted);background:#fff;border-radius:14px;padding:14px;border:1px dashed var(--line)}
+details{margin-top:24px}summary{cursor:pointer;color:var(--muted);font-weight:600}
+</style></head><body>
+<header><h1>Robotik &amp; Kodlama · Ders Paneli</h1><p>Derse dokun → WhatsApp'ta paylaş → grubu seç → gönder</p></header>
+<main id="m"></main>
+<script>
+const V = [{"tarih": "2026-10-13", "saat": "15:10", "sube": "3-A", "ad": "Elektro Gitar Çalalım", "yol": "p/DFnc0b7JJzFA/"}, {"tarih": "2026-10-14", "saat": "12:45", "sube": "2-A", "ad": "Penguen Fungi ile Tanışalım", "yol": "p/CQJXP8TFnm89/"}, {"tarih": "2026-10-14", "saat": "14:15", "sube": "1-B", "ad": "Penguen Fungi Büyüyor", "yol": "p/TKIk0lcsJisP/"}, {"tarih": "2026-10-14", "saat": "15:10", "sube": "4-B", "ad": "Arabayı Hareket Ettirelim", "yol": "p/8hHMhKT4V0X1/"}, {"tarih": "2026-10-14", "saat": "16:05", "sube": "4-A", "ad": "Arabayı Hareket Ettirelim", "yol": "p/qpSHEbKfxzdX/"}, {"tarih": "2026-10-16", "saat": "14:15", "sube": "A-Anasınıfı", "ad": "Penguen Fungi Okul Yolunda", "yol": "p/NCnyaD6O3ALc/"}, {"tarih": "2026-10-16", "saat": "15:10", "sube": "B-Anasınıfı", "ad": "Fun Grid Kod Blokları Dünyası - 2", "yol": "p/GCUCQPXXFwuB/"}, {"tarih": "2026-10-19", "saat": "14:15", "sube": "1-A", "ad": "Penguen Fungi Okul Yolunda", "yol": "p/G12LPkzvWcxR/"}, {"tarih": "2026-10-19", "saat": "15:10", "sube": "3-B", "ad": "Gömlek Düğmesi Yapalım", "yol": "p/aMf2IBPSqoYr/"}, {"tarih": "2026-10-20", "saat": "12:45", "sube": "2-B", "ad": "Penguen Fungi Antartika: Kıtalar ve Dünyamız", "yol": "p/2CBZ8KtJ7n8e/"}, {"tarih": "2026-10-20", "saat": "15:10", "sube": "3-A", "ad": "Gömlek Düğmesi Yapalım", "yol": "p/fk4WjxMtTlMf/"}, {"tarih": "2026-10-21", "saat": "12:45", "sube": "2-A", "ad": "Penguen Fungi Antartika: Kıtalar ve Dünyamız", "yol": "p/cmWkYHxCNHfg/"}, {"tarih": "2026-10-21", "saat": "14:15", "sube": "1-B", "ad": "Penguen Fungi Okul Yolunda", "yol": "p/XqxxEcmnKwrx/"}, {"tarih": "2026-10-21", "saat": "15:10", "sube": "4-B", "ad": "Kelimeleri Çevirelim", "yol": "p/KRCevUB2zW4e/"}, {"tarih": "2026-10-21", "saat": "16:05", "sube": "4-A", "ad": "Kelimeleri Çevirelim", "yol": "p/aaUwDne3neLO/"}, {"tarih": "2026-10-23", "saat": "14:15", "sube": "A-Anasınıfı", "ad": "Mıknatıs Kontrollü Fan", "yol": "p/76XJ4sMiaJag/"}, {"tarih": "2026-10-23", "saat": "15:10", "sube": "B-Anasınıfı", "ad": "Baz Devre", "yol": "p/DsExCOmJ7dly/"}];
+const GUN = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+const AY = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+const fmt = t => { const d = new Date(t+'T12:00:00'); return d.getDate()+' '+AY[d.getMonth()]+' '+GUN[d.getDay()]; };
+const n = new Date(); const bugun = n.getFullYear()+'-'+String(n.getMonth()+1).padStart(2,'0')+'-'+String(n.getDate()).padStart(2,'0');
+const gruplar = {}; V.forEach(x => (gruplar[x.tarih] = gruplar[x.tarih] || []).push(x));
+const tarihler = Object.keys(gruplar).sort();
+const kart = x => `<a class="kart" href="../${x.yol}"><img src="../${x.yol}afis.jpg" alt="" loading="lazy"><div><div class="ust">${x.sube} · ${x.saat}</div><div class="alt">${x.ad}</div><span class="git">WhatsApp'ta paylaş ›</span></div></a>`;
+const blok = (t, cls) => `<h2 class="${cls||''}">${t===bugun?'Bugün · ':''}${fmt(t)}</h2>` + gruplar[t].sort((a,b)=>a.saat.localeCompare(b.saat)).map(kart).join('');
+const m = document.getElementById('m');
+let h = '';
+if (!gruplar[bugun]) h += `<h2 class="bugun">Bugün · ${fmt(bugun)}</h2><p class="bos">Bugün paylaşım yok.</p>`;
+const gelecek = tarihler.filter(t => t >= bugun), gecmis = tarihler.filter(t => t < bugun).reverse();
+h += gelecek.map(t => blok(t, t===bugun?'bugun':'')).join('');
+if (gecmis.length) h += '<details><summary>Geçmiş dersler</summary>' + gecmis.map(t => blok(t)).join('') + '</details>';
+m.innerHTML = h;
+</script></body></html>
